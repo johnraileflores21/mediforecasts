@@ -22,11 +22,14 @@ const Login = () => {
             if (!querySnapshot.empty) {
                 console.log("Login successful");
                 navigate('/dashboard');
+                alert("Login successful");
             } else {
                 console.error("Invalid email or password");
+                alert("Invalid email or password");
             }
         } catch (error) {
             console.error("Error logging in:", error);
+            alert("Error logging in. Please try again later.");
         }
     };
 
@@ -93,7 +96,7 @@ const App = () => {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/inventory" element={<Inventory />} />
                 <Route path="/add" element={<Add />} />
-                <Route path="/edit" element={<Edit />} />
+                <Route path="/edit/:id" element={<Edit />} />
             </Routes>
         </Router>
     );

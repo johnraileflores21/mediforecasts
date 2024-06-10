@@ -8,6 +8,7 @@ const Inventory = () => {
     const [userData, setUserData] = useState<DocumentData[]>([]);
     const [showModal, setShowModal] = useState(false);
     const [deleteId, setDeleteId] = useState<string | null>(null);
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
     const fetchData = async () => {
         try {
@@ -52,11 +53,44 @@ const Inventory = () => {
         setDeleteId(null);
     };
 
+    const filteredData = userData.filter(medicine =>
+        medicine.medicineName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        medicine.medicineDescription.toLowerCase().includes(searchQuery.toLowerCase())
+        
+    );
+
+    const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(event.target.value);
+    };
+
     return (
         <DashboardLayout>
             <h1 className="text-2xl font-bold mb-4">Inventory Management</h1>
-            <Link to="/add" className="float-right bg-blue-500 text-white p-2 pl-5 pr-5 hover:bg-blue-700 rounded-md mr-5 mt-1 font-bold">Add Medicine</Link>
             <h1 className="text-xl text-center font-bold">Medicine</h1>
+            <div className="flex justify-between mb-4">
+                <Link to="/add" className="bg-blue-500 text-white p-2 pl-5 pr-5 hover:bg-blue-700 rounded-md mr-5 mt-1 font-bold">Add</Link>
+                <div className="relative">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        className="border border-gray-300 rounded-md p-2 pl-8" 
+                    />
+                    <svg
+                        className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" 
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+</div>
+            </div>
+           
             <div className="bg-white p-4 rounded-lg shadow-md mt-8">
                 <div className="flex items-center justify-center mt-5">
                     <div className="overflow-x-auto w-full">
@@ -71,18 +105,18 @@ const Inventory = () => {
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {userData.map((medicine) => (
-                                    <tr key={medicine.id}>
-                                        <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineName}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineStock} box</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineDescription}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineExpiration}</td>
-                                        <td>
+                            {filteredData.map((medicine) => (
+                                <tr key={medicine.id}>
+                                    <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineName}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineStock} box</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineDescription}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineExpiration}</td>
+                                    <td>
                                         <Link to={`/edit/${medicine.id}`} className="bg-blue-500 rounded-md text-white p-2 hover:bg-blue-700 mr-4">Edit</Link>
-                                            <button onClick={() => handleDelete(medicine.id)} className="bg-red-500 rounded-md text-white p-2 hover:bg-red-700">Delete</button>
-                                        </td>
-                                    </tr>
-                                ))}
+                                        <button onClick={() => handleDelete(medicine.id)} className="bg-red-500 rounded-md text-white p-2 hover:bg-red-700">Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
                             </tbody>
                         </table>
                     </div>

@@ -209,7 +209,7 @@ const Register = () => {
     </div>
 </form>
 
-<div className="flex items-center justify-center mt-8">
+{/*<div className="flex items-center justify-center mt-8">
     <div className="overflow-x-auto w-full">
         <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-300">
@@ -243,7 +243,7 @@ const Register = () => {
             </tbody>
         </table>
     </div>
-</div>
+</div> */}
 
 
             
