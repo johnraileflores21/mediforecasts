@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Add from './Add';
 import Edit from './Edit';
 import Inventory from './inventory';
+import Request from './Request';
 import { db } from '../firebase';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 
@@ -95,8 +96,9 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/inventory" element={<Inventory />} />
-                <Route path="/add" element={<Add />} />
+                <Route path="/inventory/add" element={<Add />} />
                 <Route path="/edit/:id" element={<Edit />} />
+                <Route path="/request" element={<Request />} />
             </Routes>
         </Router>
     );

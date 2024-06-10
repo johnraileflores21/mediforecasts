@@ -65,10 +65,13 @@ const Inventory = () => {
 
     return (
         <DashboardLayout>
-            <h1 className="text-2xl font-bold mb-4">Inventory Management</h1>
+            <h1 className="text-3xl font-bold mb-4">Inventory Management</h1>
             <h1 className="text-xl text-center font-bold">Medicine</h1>
             <div className="flex justify-between mb-4">
-                <Link to="/add" className="bg-blue-500 text-white p-2 pl-5 pr-5 hover:bg-blue-700 rounded-md mr-5 mt-1 font-bold">Add</Link>
+                <Link to="/inventory/add" className="bg-green-500 text-white p-2 hover:bg-green-700 rounded-md font-bold flex items-center space-x-1">
+            <img src="/images/add.png" alt="Add Icon" className="w-5 h-5" />
+            <span>Add</span>
+        </Link>
                 <div className="relative">
                     <input
                         type="text"
@@ -112,8 +115,16 @@ const Inventory = () => {
                                     <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineDescription}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{medicine.medicineExpiration}</td>
                                     <td>
-                                        <Link to={`/edit/${medicine.id}`} className="bg-blue-500 rounded-md text-white p-2 hover:bg-blue-700 mr-4">Edit</Link>
-                                        <button onClick={() => handleDelete(medicine.id)} className="bg-red-500 rounded-md text-white p-2 hover:bg-red-700">Delete</button>
+                                        <div className="flex items-center">
+                                            <Link to={`/edit/${medicine.id}`} className="bg-yellow-800 rounded-md text-white p-2 hover:bg-yellow-900 mr-4 flex items-center space-x-1">
+                                                <img src="/images/edit.png" alt="Edit Icon" className="w-5 h-5" />
+                                                <span>Edit</span>
+                                            </Link>
+                                            <button onClick={() => handleDelete(medicine.id)} className="bg-red-500 rounded-md text-white p-2 hover:bg-red-700 flex items-center space-x-1">
+                                                <img src="images/delete.png" alt="Delete Icon" className="w-5 h-5" />
+                                                <span>Delete</span>
+                                            </button>
+                                     </div>
                                     </td>
                                 </tr>
                             ))}

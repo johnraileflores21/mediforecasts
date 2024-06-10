@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import DashboardLayout from './DashboardLayout';
+import Sidebar from './sidebar';
 
 const Edit = () => {
     const { id } = useParams<{ id: string }>();

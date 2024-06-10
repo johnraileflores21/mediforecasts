@@ -96,12 +96,12 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold mb-4">Welcome to the Dashboard</h1>
             <div className="grid grid-cols-3 gap-4">
                 <div className="w-full h-48 block rounded-lg bg-blue-500 p-4 shadow-md dark:bg-neutral-700 mb-4">
-                    <h5 className="mb-2 text-lg font-medium leading-tight text-white dark:text-neutral-50">
-
-                    </h5>
+                   
                  <p className="mb-4 text-sm text-white dark:text-neutral-200">
                     
                  </p>
+                
+                 
                     {/*<button
                     type="button"
                     className="inline-block rounded bg-primary px-4 py-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700">
@@ -115,6 +115,7 @@ const Dashboard = () => {
                  <p className="mb-4 text-sm text-white dark:text-neutral-200">
                     
                  </p>
+                 
                     {/*<button
                     type="button"
                     className="inline-block rounded bg-primary px-4 py-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700">
