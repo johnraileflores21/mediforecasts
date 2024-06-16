@@ -52,8 +52,6 @@ const Edit = () => {
         try {
             await updateDoc(doc(db, `Medicines/${id}`), formData);
             console.log("Document successfully updated!");
-            // Redirect to the inventory page after updating
-            // You may need to replace '/inventory' with the appropriate route
             window.location.href = '/inventory';
         } catch (error) {
             console.error("Error updating document:", error);

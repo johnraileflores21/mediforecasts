@@ -24,9 +24,9 @@ const Inventory = () => {
         fetchData();
     }, []);
 
-    const handleEdit = async (id: string) => {
+    {/*const handleEdit = async (id: string) => {
         // Edit logic here
-    };
+    }; */}
 
     const handleDelete = async (id: string) => {
         setDeleteId(id);
